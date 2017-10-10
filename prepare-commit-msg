@@ -1,0 +1,19 @@
+#!/bin/sh
+branch=$(git rev-parse --abbrev-ref HEAD)
+jira_branch=$(echo $branch | egrep -o '[A-Z]{3,}-\d+')
+jira_msg=$(egrep -o '[A-Z]{3,}-\d+' "$1")
+
+
+if [[ "$jira_msg" != "" ]]; then
+	if [[ "$jira_msg" != "$jira_branch" ]]; then
+		echo "WARNING: JIRA codes in branch name and commit message didn't match"
+	fi
+else
+	if [[ "$jira_branch" != "" ]]; then
+		sed -i '' '1s/^/'$jira_branch' /' $1
+	else
+		echo "Commit message requires JIRA code."
+		exit 1
+	fi
+fi
+
