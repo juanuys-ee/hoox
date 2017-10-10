@@ -1,0 +1,2 @@
+# hoox
+Useful Git hooks
