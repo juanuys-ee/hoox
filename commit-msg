@@ -1,6 +1,10 @@
 #!/bin/sh
 
 test "" != "$(egrep '[A-Z]{3,}-\d+' "$1")" || {
-	echo >&2 Commit message requires JIRA code.
+	echo >&2 "\t\t🚨\t🚨\t🚨\t🚨\t🚨\t🚨\t🚨"
+	echo >&2 
+	echo >&2 "\t\t🚨\tCommit message requires JIRA code.\t🚨"
+	echo >&2 
+	echo >&2 "\t\t🚨\t🚨\t🚨\t🚨\t🚨\t🚨\t🚨"
 	exit 1
 }
